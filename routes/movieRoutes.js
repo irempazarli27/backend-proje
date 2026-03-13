@@ -19,6 +19,6 @@ router.put("/movies/:id", authMiddleware, updateMovie);
 
 router.delete("/movies/:id", authMiddleware, deleteMovie);
 
-router.get("/movies/:id", authMiddleware, getMovieById);
+router.get("/movies/:id", getMovieById);
 
 module.exports = router;
