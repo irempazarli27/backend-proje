@@ -32,12 +32,15 @@ async function register(req, res){
 
 async function login(req, res){
 
+  console.log(req.body);
+
+
     const {username, password} = req.body;
 
     const user = await User.findOne({username});
 
     if(!user){
-        return res.status(400).jjson({message:"User not found"});
+        return res.status(400).json({message:"User not found"});
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
