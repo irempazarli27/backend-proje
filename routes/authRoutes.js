@@ -7,7 +7,7 @@ const validateRegister = require("../middleware/validateRegister");
 
 const loginLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: 5,
+    max: 100,
     message:{
         success: false,
         message: "To many login attempts. Try again later."
