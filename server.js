@@ -15,7 +15,7 @@ const reviewRoutes = require("./routes/reviewRoutes");
 const app =express();
 
 app.use(cors({
-  origin: "http://localhost:5173"
+  origin: "*"
 }));
 
 app.use(helmet());
@@ -40,7 +40,7 @@ app.use(errorMiddleware);
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log("Server çalışıyor");
+  console.log(`Server running on port ${PORT}`);
 });
 
 
