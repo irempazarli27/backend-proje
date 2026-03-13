@@ -22,6 +22,10 @@ app.use(helmet());
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.json({ message: "Backend API running 🚀" });
+});
+
 app.use("/uploads", express.static("uploads"));
 
 mongoose.connect(process.env.MONGO_URI)
