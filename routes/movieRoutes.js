@@ -11,7 +11,7 @@ const {
   getMovieById
 } = require("../controllers/movieController");
 
-router.get("/movies", authMiddleware, getMovies);
+router.get("/movies", getMovies);
 
 router.post("/movies", authMiddleware, createMovie);
 
