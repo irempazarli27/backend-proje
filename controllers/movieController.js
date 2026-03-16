@@ -5,12 +5,17 @@ const apiResponse = require("../utils/apiResponse");
 
 const getMovies = asyncHandler(async (req, res) => {
 
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 50;
+
+    const skip = (page - 1) * limit;
+
     const query = {owner: req.user.id};
 
     if(req.query.year){
         query.year = req.query.year;
     }
-   
+
     if(req.query.search){
         query.title = new RegExp(req.query.search, "i")
     }
@@ -19,10 +24,18 @@ const getMovies = asyncHandler(async (req, res) => {
 
    const movies = await movieService.getMovies(
     query,
+    skip,
+    limit,
     req.query.sort
    )
     
-   return apiResponse(res,movies);
+   return apiResponse(res, {
+    total,
+    page,
+    limit,
+    pages: Math.ceil(total/limit),
+    movies
+   });
 });
 
 const getMovieById = asyncHandler(async(req, res) => {
