@@ -1,6 +1,6 @@
 const Movie = require("../models/Movie");
 
-async function getMovies(query, skip, limit, sort){
+async function getMovies(query, sort){
 
     let moviesQuery = Movie.find(query);
 
@@ -9,8 +9,6 @@ async function getMovies(query, skip, limit, sort){
     }
 
     const movies = await moviesQuery
-      .skip(skip)
-      .limit(limit)
       .populate("owner", "username");
 
     return movies;
