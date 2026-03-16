@@ -5,6 +5,8 @@ const movieSchema = new mongoose.Schema({
   title: String,
   year: Number,
 
+  raiting: Number,
+
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"

@@ -54,11 +54,12 @@ const getMovieById = asyncHandler(async(req, res) => {
 
 const createMovie = asyncHandler(async (req, res) => {
 
-    const {title, year} = req.body;
+    const {title, year, raiting} = req.body;
 
     const movie = await movieService.createMovie({
         title,
         year,
+        raiting,
         owner: req.user.id
     });
 
